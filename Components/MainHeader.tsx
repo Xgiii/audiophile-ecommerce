@@ -5,7 +5,7 @@ import NavLinks from './NavLinks';
 
 function MainHeader() {
   return (
-    <div className='bg-main-black w-full h-20 px-16 flex justify-between items-center'>
+    <div className='bg-main-black w-full h-20 px-6 md:px-16 lg:px-32 2xl:px-[20vw] flex justify-between items-center'>
       <Link href='/'>
         <Image
           src='/images/shared/desktop/logo.svg'
