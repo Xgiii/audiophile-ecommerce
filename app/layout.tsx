@@ -19,10 +19,8 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={manrope.className}>
-        <main>
-          <MainHeader />
-          {children}
-        </main>
+        <MainHeader />
+        <main>{children}</main>
       </body>
     </html>
   );
