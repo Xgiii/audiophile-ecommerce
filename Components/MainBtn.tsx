@@ -14,7 +14,7 @@ function MainBtn({
   return (
     <button
       className={
-        'bg-orange text-white py-3 px-7 uppercase hover:bg-opacity-80 text-sm font-semibold tracking-wider' +
+        'bg-orange text-white py-3 px-7 uppercase hover:bg-light-orange text-sm font-semibold tracking-wider' +
         className
       }
       onClick={onClick}
