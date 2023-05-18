@@ -25,6 +25,19 @@ function HomeTiles() {
           <SecondaryBtn>see product</SecondaryBtn>
         </div>
       </div>
+      <div className='relative'>
+        <Image
+          src='/images/home/desktop/image-speaker-zx7.jpg'
+          alt='speaker image'
+          width={1920}
+          height={1080}
+          className='rounded-md'
+        />
+        <div className='absolute top-1/2 left-[10%] -translate-y-1/2 space-y-3'>
+          <h2 className='text-3xl font-semibold uppercase'>zx7 speakers</h2>
+          <SecondaryBtn outline>see product</SecondaryBtn>
+        </div>
+      </div>
     </section>
   );
 }
