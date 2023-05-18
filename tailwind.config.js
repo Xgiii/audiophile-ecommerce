@@ -14,6 +14,15 @@ module.exports = {
         orange: '#D87D4A',
         'light-orange': '#e4a480',
       },
+      animation: {
+        'darken-bg': 'darken-bg .4s ease-in-out',
+      },
+      keyframes: {
+        'darken-bg': {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+      },
     },
   },
   plugins: [],
