@@ -10,7 +10,7 @@ function Hero() {
           <h2 className='uppercase text-light-black tracking-[0.4rem]'>
             New Product
           </h2>
-          <h1 className='text-white text-5xl lg:text-6xl font-semibold tracking-wide leading-[1.1] mt-2'>
+          <h1 className='text-white text-4xl sm:text-5xl xl:text-6xl font-semibold tracking-wide leading-[1.1] mt-2'>
             XX99 MARK II HEADPHONES
           </h1>
           <p className='text-light-black mb-12 mt-4'>

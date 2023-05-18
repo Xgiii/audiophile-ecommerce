@@ -4,7 +4,7 @@ import React from 'react';
 
 function GalleryItem({ image, label }: { image: string; label: string }) {
   return (
-    <div className='relative bg-light-gray w-[32%] flex flex-col items-center justify-center rounded-md pt-14 py-6 mt-24 group cursor-pointer'>
+    <div className='relative bg-light-gray sm:w-[32%] flex flex-col items-center justify-center rounded-md pt-14 py-6 mt-24 group cursor-pointer'>
       <Image
         src={image}
         alt={label}
