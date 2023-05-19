@@ -52,7 +52,7 @@ function HomeTiles() {
           <SecondaryBtn outline>see product</SecondaryBtn>
         </div>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
         <Image
           src='/images/home/desktop/image-earphones-yx1.jpg'
           alt='earphones image'

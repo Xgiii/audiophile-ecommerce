@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-function NavLinks() {
+function NavLinks({ footer }: { footer?: boolean }) {
   const pathname = usePathname();
 
   const links = [
@@ -14,7 +14,11 @@ function NavLinks() {
   ];
 
   return (
-    <nav className='hidden md:flex items-center uppercase text-white space-x-6 tracking-widest text-[0.95rem]'>
+    <nav
+      className={`${
+        footer ? 'flex' : 'hidden'
+      } md:flex items-center uppercase text-white space-x-6 tracking-widest text-[0.95rem]`}
+    >
       {links.map((link) => (
         <NavLink
           key={link.href}

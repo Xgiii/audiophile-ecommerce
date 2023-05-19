@@ -1,4 +1,5 @@
 import Gallery from '@/Components/Gallery';
+import GeneralDescription from '@/Components/GeneralDescription';
 import Hero from '@/Components/Hero';
 import HomeTiles from '@/Components/HomeTiles';
 
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <Gallery />
       <HomeTiles />
+      <GeneralDescription />
       <div className='mt-20'></div>
     </>
   );
