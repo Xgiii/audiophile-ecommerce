@@ -10,7 +10,6 @@ export default function Home() {
       <Gallery />
       <HomeTiles />
       <GeneralDescription />
-      <div className='mt-20'></div>
     </>
   );
 }
