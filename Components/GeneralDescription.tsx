@@ -3,7 +3,7 @@ import React from 'react';
 
 function GeneralDescription() {
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 gap-10 px-6 md:px-16 lg:px-32 2xl:px-[20vw] mt-16 mb-16'>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-10 px-6 md:px-16 lg:px-32 2xl:px-[20vw] mt-24 mb-16'>
       <div className='flex flex-col justify-center space-y-6'>
         <Image
           src='/images/shared/tablet/image-best-gear.jpg'

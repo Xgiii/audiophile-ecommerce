@@ -2,9 +2,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-function GalleryItem({ image, label }: { image: string; label: string }) {
+function GalleryItem({
+  image,
+  label,
+  onClick,
+}: {
+  image: string;
+  label: string;
+  onClick?: () => void;
+}) {
   return (
-    <div className='relative bg-light-gray sm:w-[32%] flex flex-col items-center justify-center rounded-md pt-14 py-6 mt-24 group cursor-pointer'>
+    <Link
+      onClick={onClick}
+      href={'/' + label.toLowerCase()}
+      className='relative bg-light-gray sm:w-[32%] flex flex-col items-center justify-center rounded-md pt-14 py-6 mt-24 group cursor-pointer'
+    >
       <Image
         src={image}
         alt={label}
@@ -16,7 +28,7 @@ function GalleryItem({ image, label }: { image: string; label: string }) {
         {label}
       </h2>
 
-      <Link href={'/' + label} className='flex items-center space-x-2'>
+      <div className='flex items-center space-x-2'>
         <p className='text-gray-400 uppercase text-xs md:text-sm group-hover:text-orange transition-all'>
           shop
         </p>
@@ -26,8 +38,8 @@ function GalleryItem({ image, label }: { image: string; label: string }) {
           width={10}
           height={10}
         />
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }
 

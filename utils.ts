@@ -1,3 +1,7 @@
+import { notFound } from 'next/navigation';
+import products from './data/products.json';
+import { Product } from './models';
+
 export const gallery = [
   {
     id: 1,
@@ -15,3 +19,27 @@ export const gallery = [
     image: '/images/shared/desktop/image-earphones.png',
   },
 ];
+
+export function getProducts() {
+  return JSON.parse(JSON.stringify(products.products));
+}
+
+function sortByNewness(a: Product, b: Product) {
+  if (a.new && !b.new) {
+    return -1;
+  } else if (!a.new && b.new) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+export function getCategoryProducts(category: string) {
+  let categoryProducts = JSON.parse(JSON.stringify(products.products)).filter(
+    (product: Product) => product.category === category
+  );
+
+  categoryProducts.sort(sortByNewness);
+
+  return categoryProducts;
+}

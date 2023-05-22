@@ -10,6 +10,10 @@ import GalleryItem from './GalleryItem';
 function MainHeader() {
   const [menu, setMenu] = useState(false);
 
+  function closeMenuOnAnotherPageHandler() {
+    setTimeout(() => setMenu(false), 100);
+  }
+
   return (
     <>
       <div className='relative bg-main-black w-full h-20 px-6 md:px-16 lg:px-32 2xl:px-[20vw] flex justify-between items-center z-20'>
@@ -19,7 +23,12 @@ function MainHeader() {
           } left-0 w-full bg-white flex flex-col sm:flex-row space-x-2 px-6 pb-6 justify-center z-20 transition-all duration-500 rounded-b-lg`}
         >
           {gallery.map((item) => (
-            <GalleryItem key={item.id} label={item.label} image={item.image} />
+            <GalleryItem
+              onClick={closeMenuOnAnotherPageHandler}
+              key={item.id}
+              label={item.label}
+              image={item.image}
+            />
           ))}
         </div>
 
@@ -53,7 +62,10 @@ function MainHeader() {
         />
       </div>
       {menu && (
-        <div className='fixed inset-0 bg-main-black/50 animate-darken-bg transition-all z-10'></div>
+        <div
+          onClick={() => setMenu(false)}
+          className='fixed inset-0 bg-main-black/50 animate-darken-bg transition-all z-10'
+        ></div>
       )}
     </>
   );
