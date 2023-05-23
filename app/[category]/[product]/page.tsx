@@ -1,3 +1,5 @@
+import ProductDescription from '@/Components/ProductDescription';
+import ProductGallery from '@/Components/ProductGallery';
 import ProductPageItem from '@/Components/ProductPageItem';
 import { getProductBySlug } from '@/utils';
 import Link from 'next/link';
@@ -17,6 +19,8 @@ function ProductPage({ params }: { params: { product: string } }) {
         </Link>
       </div>
       <ProductPageItem product={product} />
+      <ProductDescription product={product} />
+      <ProductGallery gallery={product.gallery} />
     </div>
   );
 }
