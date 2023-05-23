@@ -1,9 +1,11 @@
 import Gallery from '@/Components/Gallery';
 import GeneralDescription from '@/Components/GeneralDescription';
+import HorizontalLine from '@/Components/HorizontalLine';
 import MainBtn from '@/Components/MainBtn';
 import { Product } from '@/models';
 import { getCategoryProducts, getProducts } from '@/utils';
 import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
@@ -20,7 +22,8 @@ function ProductsPage({
 
   return (
     <>
-      <header className='flex justify-center items-center bg-main-black w-full h-[20vh]'>
+      <header className='relative flex justify-center items-center bg-main-black w-full h-[20vh]'>
+        <HorizontalLine />
         <h1 className='text-white uppercase text-4xl tracking-wider font-semibold'>
           {category}
         </h1>
@@ -58,7 +61,9 @@ function ProductItem({ product, index }: { product: Product; index: number }) {
             )}
             <h2 className='font-semibold text-3xl mb-6'>{product.name}</h2>
             <p className='text-light-black mb-6'>{product.description}</p>
-            <MainBtn>see product</MainBtn>
+            <Link href={`/${product.category}/${product.slug}`}>
+              <MainBtn>see product</MainBtn>
+            </Link>
           </div>
         </>
       ) : (
@@ -71,7 +76,9 @@ function ProductItem({ product, index }: { product: Product; index: number }) {
             )}
             <h2 className='font-semibold text-3xl mb-6'>{product.name}</h2>
             <p className='text-light-black mb-6'>{product.description}</p>
-            <MainBtn>see product</MainBtn>
+            <Link href={`/${product.category}/${product.slug}`}>
+              <MainBtn>see product</MainBtn>
+            </Link>
           </div>
           <Image
             src={product.image?.desktop!}
@@ -88,7 +95,9 @@ function ProductItem({ product, index }: { product: Product; index: number }) {
             )}
             <h2 className='font-semibold text-3xl mb-6'>{product.name}</h2>
             <p className='text-light-black mb-6'>{product.description}</p>
-            <MainBtn>see product</MainBtn>
+            <Link href={`/${product.category}/${product.slug}`}>
+              <MainBtn>see product</MainBtn>
+            </Link>
           </div>
         </>
       )}

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
-import MainBtn from './MainBtn';
 import SecondaryBtn from './SecondaryBtn';
+import Link from 'next/link';
 
 function HomeTiles() {
   return (
@@ -22,7 +22,9 @@ function HomeTiles() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <SecondaryBtn>see product</SecondaryBtn>
+          <Link href='/speakers/zx9-speaker'>
+            <SecondaryBtn>see product</SecondaryBtn>
+          </Link>
         </div>
       </div>
       <div className='relative'>
@@ -48,8 +50,10 @@ function HomeTiles() {
           className='rounded-md sm:hidden'
         />
         <div className='absolute top-1/2 left-[10%] -translate-y-1/2 space-y-3'>
-          <h2 className='text-3xl font-semibold uppercase'>zx7 speakers</h2>
-          <SecondaryBtn outline>see product</SecondaryBtn>
+          <h2 className='text-3xl font-semibold uppercase mb-3'>zx7 speakers</h2>
+          <Link href='/speakers/zx7-speaker'>
+            <SecondaryBtn outline>see product</SecondaryBtn>
+          </Link>
         </div>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
@@ -62,7 +66,9 @@ function HomeTiles() {
         />
         <div className='py-16 text-center md:text-left md:py-0 flex flex-col px-[15%] justify-center space-y-3 bg-light-gray w-full h-full rounded-md'>
           <h2 className='text-3xl font-semibold uppercase'>yx1 earphones</h2>
-          <SecondaryBtn outline>see product</SecondaryBtn>
+          <Link href='/earphones/yx1-earphones'>
+            <SecondaryBtn outline>see product</SecondaryBtn>
+          </Link>
         </div>
       </div>
     </section>

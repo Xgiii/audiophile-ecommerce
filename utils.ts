@@ -43,3 +43,15 @@ export function getCategoryProducts(category: string) {
 
   return categoryProducts;
 }
+
+export function getProductBySlug(slug: string) {
+  const product = products.products.find(
+    (product: Product) => product.slug === slug
+  );
+
+  if (!product) {
+    notFound();
+  }
+
+  return product;
+}
