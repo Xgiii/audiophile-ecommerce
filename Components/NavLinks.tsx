@@ -16,8 +16,8 @@ function NavLinks({ footer }: { footer?: boolean }) {
   return (
     <nav
       className={`${
-        footer ? 'flex text-sm flex-wrap space-x-0 md:space-x-6 justify-between' : 'hidden'
-      } md:flex items-center uppercase text-white space-x-6 tracking-widest text-[0.95rem]`}
+        footer ? 'flex text-sm flex-wrap space-x-0 justify-between' : 'hidden'
+      } md:flex items-center uppercase text-white sm:space-x-6 tracking-widest text-[0.95rem]`}
     >
       {links.map((link) => (
         <NavLink
