@@ -1,9 +1,9 @@
-import Gallery from '@/Components/Gallery';
-import GeneralDescription from '@/Components/GeneralDescription';
-import ProductDescription from '@/Components/ProductDescription';
-import ProductGallery from '@/Components/ProductGallery';
-import ProductPageItem from '@/Components/ProductPageItem';
-import YouMayLike from '@/Components/YouMayLike';
+import Gallery from '@/src/Components/Gallery';
+import GeneralDescription from '@/src/Components/GeneralDescription';
+import ProductDescription from '@/src/Components/ProductDescription';
+import ProductGallery from '@/src/Components/ProductGallery';
+import ProductPageItem from '@/src/Components/ProductPageItem';
+import YouMayLike from '@/src/Components/YouMayLike';
 import { getProductBySlug } from '@/utils';
 import Link from 'next/link';
 import React from 'react';

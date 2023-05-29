@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gallery } from '../models';
+import { Gallery } from '../../models';
 import Image from 'next/image';
 
 function ProductGallery({ gallery }: { gallery: Gallery }) {

@@ -1,7 +1,7 @@
-import Gallery from '@/Components/Gallery';
-import GeneralDescription from '@/Components/GeneralDescription';
-import HorizontalLine from '@/Components/HorizontalLine';
-import MainBtn from '@/Components/MainBtn';
+import Gallery from '@/src/Components/Gallery';
+import GeneralDescription from '@/src/Components/GeneralDescription';
+import HorizontalLine from '@/src/Components/HorizontalLine';
+import MainBtn from '@/src/Components/MainBtn';
 import { Product } from '@/models';
 import { getCategoryProducts, getProducts } from '@/utils';
 import Image from 'next/image';
