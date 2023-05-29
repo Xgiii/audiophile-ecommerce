@@ -1,9 +1,29 @@
+'use client';
+
 import { Product } from '@/models';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import MainBtn from './MainBtn';
+import { useAppDispatch } from '@/store/hooks';
+import { cartActions } from '@/store/cartSlice';
 
 function ProductPageItem({ product }: { product: Product }) {
+  const [qty, setQty] = useState(0);
+
+  const dispatch = useAppDispatch();
+
+  function addToCartHandler() {
+    dispatch(
+      cartActions.addItem({
+        id: product.id,
+        cartImage: product.cartImage,
+        price: product.price,
+        shortName: product.shortName,
+        quantity: qty,
+      })
+    );
+  }
+
   return (
     <div className='grid grid-cols-3 md:grid-cols-2 gap-12 lg:gap-20 '>
       <div className='flex items-center justify-center'>
@@ -38,17 +58,24 @@ function ProductPageItem({ product }: { product: Product }) {
           $ {product.price.toLocaleString('en-US')}
         </p>
         <div className='flex'>
-          <button className='bg-light-gray text-light-black  text-xl font-bold py-2 px-4 hover:bg-gray-200 hover:text-orange transition-all'>
+          <button
+            onClick={() => setQty((prevQty) => prevQty - 1)}
+            disabled={qty === 0}
+            className='bg-light-gray text-light-black  text-xl font-bold py-2 px-4 hover:bg-gray-200 hover:text-orange transition-all'
+          >
             -
           </button>
 
-          <div className='bg-light-gray text-black flex items-center justify-center py-2 px-4'>
-            0
+          <div className='bg-light-gray text-black flex items-center justify-center w-10 h-full'>
+            {qty}
           </div>
-          <button className='bg-light-gray text-light-black text-xl font-bold py-2 px-4 mr-4 hover:bg-gray-200 hover:text-orange transition-all'>
+          <button
+            onClick={() => setQty((prevQty) => prevQty + 1)}
+            className='bg-light-gray text-light-black text-xl font-bold py-2 px-4 mr-4 hover:bg-gray-200 hover:text-orange transition-all'
+          >
             +
           </button>
-          <MainBtn>Add to cart</MainBtn>
+          <MainBtn onClick={addToCartHandler}>Add to cart</MainBtn>
         </div>
       </div>
     </div>

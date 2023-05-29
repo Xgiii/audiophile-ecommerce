@@ -33,7 +33,7 @@ function GalleryItem({
           shop
         </p>
         <Image
-          src='images/shared/desktop/icon-arrow-right.svg'
+          src='/images/shared/desktop/icon-arrow-right.svg'
           alt='arrow icon'
           width={10}
           height={10}
