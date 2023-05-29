@@ -2,13 +2,23 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavLinks from './NavLinks';
 import { gallery } from '@/utils';
 import GalleryItem from './GalleryItem';
+import Cart from './Cart';
+import { useAppSelector } from '@/store/hooks';
 
 function MainHeader() {
   const [menu, setMenu] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [cart, setCart] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const cartQty = useAppSelector((state) => state.cart.totalQty);
 
   function closeMenuOnAnotherPageHandler() {
     setTimeout(() => setMenu(false), 100);
@@ -54,18 +64,32 @@ function MainHeader() {
           />
         </Link>
         <NavLinks />
-        <Image
-          src='/images/shared/desktop/icon-cart.svg'
-          width={25}
-          height={25}
-          alt='cart'
-        />
+        <div className='relative'>
+          <Image
+            src='/images/shared/desktop/icon-cart.svg'
+            width={25}
+            height={25}
+            alt='cart'
+            className='cursor-pointer '
+            onClick={() => setCart((prevValue) => !prevValue)}
+          />
+          {cartQty > 0 && mounted && (
+            <div className='absolute -top-3 -right-2 bg-orange rounded-full w-5 h-5 flex items-center justify-center text-white text-xs font-bold'>
+              {cartQty}
+            </div>
+          )}
+        </div>
       </div>
-      {menu && (
+      {(menu || cart) && (
         <div
-          onClick={() => setMenu(false)}
+          onClick={() => (setMenu(false), setCart(false))}
           className='fixed inset-0 bg-main-black/50 animate-darken-bg transition-all z-10'
         ></div>
+      )}
+      {cart && (
+        <div className='absolute z-30 top-20 right-6 md:right-16 lg:right-32 2xl:right-[20vw]'>
+          <Cart />
+        </div>
       )}
     </>
   );
