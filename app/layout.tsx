@@ -1,9 +1,9 @@
 'use client';
 
-import MainHeader from '@/src/Components/MainHeader';
+import MainHeader from '@/Components/MainHeader';
 import './globals.css';
 import { Manrope } from 'next/font/google';
-import Footer from '@/src/Components/Footer';
+import Footer from '@/Components/Footer';
 import { Provider } from 'react-redux';
 import { store } from '@/store/store';
 
