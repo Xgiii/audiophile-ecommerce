@@ -87,7 +87,7 @@ function MainHeader() {
         ></div>
       )}
       {cart && (
-        <div className='absolute z-30 top-20 right-6 md:right-16 lg:right-32 2xl:right-[20vw]'>
+        <div className='absolute z-30 top-20 right-0 sm:right-6 md:right-16 lg:right-32 2xl:right-[20vw]'>
           <Cart />
         </div>
       )}

@@ -13,7 +13,7 @@ function Cart() {
     return cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   }
   return (
-    <div className='bg-white p-12 rounded-md flex flex-col space-y-4 w-80 md:w-96'>
+    <div className='bg-white p-12 rounded-md flex flex-col space-y-4 w-[100vw] sm:w-96'>
       {cartItems.length === 0 ? (
         <p className='text-center text-xl text-light-black'>Cart is empty</p>
       ) : (
