@@ -35,6 +35,7 @@ const cartSlice = createSlice({
         Cookies.set('items', JSON.stringify([...state.items]));
       } else {
         existingItem.quantity = existingItem.quantity + newItem.quantity;
+        Cookies.set('totalQty', JSON.stringify(state.totalQty));
         Cookies.set('items', JSON.stringify([...state.items]));
       }
     },

@@ -8,15 +8,22 @@ import { gallery } from '@/utils';
 import GalleryItem from './GalleryItem';
 import Cart from './Cart';
 import { useAppSelector } from '@/store/hooks';
+import { usePathname } from 'next/navigation';
 
 function MainHeader() {
   const [menu, setMenu] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [cart, setCart] = useState(false);
 
+  const pathname = usePathname();
+
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    setCart(false);
+  }, [pathname]);
 
   const cartQty = useAppSelector((state) => state.cart.totalQty);
 

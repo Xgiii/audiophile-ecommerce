@@ -6,7 +6,7 @@ import { useAppDispatch } from '@/store/hooks';
 import Image from 'next/image';
 import React from 'react';
 
-function CartItem({ item }: { item: CartItem }) {
+function CartItem({ item, summary }: { item: CartItem; summary?: boolean }) {
   const dispatch = useAppDispatch();
 
   return (
@@ -26,27 +26,31 @@ function CartItem({ item }: { item: CartItem }) {
           </p>
         </div>
       </div>
-      <div className='flex'>
-        <button
-          onClick={() => dispatch(cartActions.removeItem(item.id))}
-          disabled={item.quantity === 0}
-          className='bg-light-gray text-light-black font-bold py-1 px-3 hover:bg-gray-200 hover:text-orange transition-all'
-        >
-          -
-        </button>
+      {!summary ? (
+        <div className='flex'>
+          <button
+            onClick={() => dispatch(cartActions.removeItem(item.id))}
+            disabled={item.quantity === 0}
+            className='bg-light-gray text-light-black font-bold py-1 px-3 hover:bg-gray-200 hover:text-orange transition-all'
+          >
+            -
+          </button>
 
-        <div className='bg-light-gray text-black flex items-center justify-center w-6 py-1 h-full'>
-          {item.quantity}
+          <div className='bg-light-gray text-black flex items-center justify-center w-6 py-1 h-full'>
+            {item.quantity}
+          </div>
+          <button
+            onClick={() =>
+              dispatch(cartActions.addItem({ ...item, quantity: 1 }))
+            }
+            className='bg-light-gray text-light-black font-bold py-1 px-3 hover:bg-gray-200 hover:text-orange transition-all'
+          >
+            +
+          </button>
         </div>
-        <button
-          onClick={() =>
-            dispatch(cartActions.addItem({ ...item, quantity: 1 }))
-          }
-          className='bg-light-gray text-light-black font-bold py-1 px-3 hover:bg-gray-200 hover:text-orange transition-all'
-        >
-          +
-        </button>
-      </div>
+      ) : (
+        <p className='text-light-black'>x{item.quantity}</p>
+      )}
     </div>
   );
 }

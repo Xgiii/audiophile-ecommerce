@@ -5,13 +5,14 @@ import React from 'react';
 import CartItem from './CartItem';
 import { cartActions } from '@/store/cartSlice';
 import MainBtn from './MainBtn';
+import { useRouter } from 'next/navigation';
+import { totalPrice } from '@/utils';
 
 function Cart() {
+  const router = useRouter();
   const cartItems = useAppSelector((state) => state.cart.items);
   const dispatch = useAppDispatch();
-  function totalPrice() {
-    return cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  }
+
   return (
     <div className='bg-white p-12 rounded-md flex flex-col space-y-4 w-[100vw] sm:w-96'>
       {cartItems.length === 0 ? (
@@ -32,9 +33,11 @@ function Cart() {
           ))}
           <div className='flex justify-between items-center'>
             <p className='uppercase text-sm text-light-black'>total</p>
-            <p className='font-semibold text-lg'>$ {totalPrice().toLocaleString('en-US')}</p>
+            <p className='font-semibold text-lg'>
+              $ {totalPrice(cartItems).toLocaleString('en-US')}
+            </p>
           </div>
-          <MainBtn>checkout</MainBtn>
+          <MainBtn onClick={() => router.push('/checkout')}>checkout</MainBtn>
         </>
       )}
     </div>

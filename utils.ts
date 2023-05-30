@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import products from './data/products.json';
-import { Product } from './models';
+import { CartItem, Product } from './models';
 
 export const gallery = [
   {
@@ -54,4 +54,8 @@ export function getProductBySlug(slug: string) {
   }
 
   return product;
+}
+
+export function totalPrice(cartItems: CartItem[]) {
+  return cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 }
