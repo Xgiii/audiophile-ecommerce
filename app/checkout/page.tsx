@@ -1,5 +1,6 @@
 'use client';
 
+import CheckoutForm from '@/Components/CheckoutForm';
 import Summary from '@/Components/Summary';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -15,10 +16,10 @@ function CheckoutPage() {
       >
         Go Back
       </button>
-      <div className='grid grid-cols-1 lg:grid-cols-3 gap-y-6 lg:gap-6 pb-20'>
-        <div className='col-span-2 bg-white h-96 rounded-md'></div>
+      <form className='grid grid-cols-1 lg:grid-cols-3 gap-y-6 lg:gap-6 pb-20'>
+        <CheckoutForm />
         <Summary />
-      </div>
+      </form>
     </div>
   );
 }

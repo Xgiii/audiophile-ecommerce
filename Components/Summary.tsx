@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import { totalPrice } from '@/utils';
 
 function Summary() {
-  const router = useRouter();
+  const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart.items);
 
   const price = totalPrice(cartItems);
@@ -18,44 +18,39 @@ function Summary() {
   const grandTotal = price + shipping + vat;
 
   return (
-    <div className='bg-white p-12 xl:p-12 lg:p-6 rounded-md flex flex-col space-y-4'>
-      {cartItems.length === 0 ? (
-        <p className='text-center text-xl text-light-black'>Cart is empty</p>
-      ) : (
-        <>
-          <div className='flex justify-between items-center'>
-            <h2 className='uppercase text-xl font-semibold'>summary</h2>
-          </div>
-          {cartItems.map((item) => (
-            <CartItem key={item.id} item={item} summary />
-          ))}
-          <div className='flex justify-between items-center'>
-            <p className='uppercase text-sm text-light-black'>total</p>
-            <p className='font-semibold text-lg'>
-              $ {price.toLocaleString('en-US')}
-            </p>
-          </div>
-          <div className='flex justify-between items-center'>
-            <p className='uppercase text-sm text-light-black'>shipping</p>
-            <p className='font-semibold text-lg'>$ 50</p>
-          </div>
-          <div className='flex justify-between items-center'>
-            <p className='uppercase text-sm text-light-black'>vat (included)</p>
-            <p className='font-semibold text-lg'>
-              $ {vat.toLocaleString('en-US')}
-            </p>
-          </div>
-          <div className='flex justify-between items-center pt-6'>
-            <p className='uppercase text-sm text-light-black'>grand total</p>
-            <p className='font-semibold text-lg text-orange'>
-              $ {grandTotal.toLocaleString('en-US')}
-            </p>
-          </div>
-          <MainBtn onClick={() => router.push('/checkout')}>
-            continue & pay
-          </MainBtn>
-        </>
-      )}
+    <div className='bg-white p-12 xl:p-12 lg:p-6 rounded-md flex flex-col space-y-4 self-start'>
+      <div className='flex justify-between items-center'>
+        <h2 className='uppercase text-xl font-semibold'>summary</h2>
+      </div>
+      {cartItems.map((item) => (
+        <CartItem key={item.id} item={item} summary />
+      ))}
+      <div className='flex justify-between items-center'>
+        <p className='uppercase text-sm text-light-black'>total</p>
+        <p className='font-semibold text-lg'>
+          $ {price.toLocaleString('en-US')}
+        </p>
+      </div>
+      <div className='flex justify-between items-center'>
+        <p className='uppercase text-sm text-light-black'>shipping</p>
+        <p className='font-semibold text-lg'>$ 50</p>
+      </div>
+      <div className='flex justify-between items-center'>
+        <p className='uppercase text-sm text-light-black'>vat (included)</p>
+        <p className='font-semibold text-lg'>$ {vat.toLocaleString('en-US')}</p>
+      </div>
+      <div className='flex justify-between items-center pt-6'>
+        <p className='uppercase text-sm text-light-black'>grand total</p>
+        <p className='font-semibold text-lg text-orange'>
+          $ {grandTotal.toLocaleString('en-US')}
+        </p>
+      </div>
+      <MainBtn
+        disabled={cartItems.length === 0}
+        onClick={() => dispatch(cartActions.removeAll())}
+      >
+        continue & pay
+      </MainBtn>
     </div>
   );
 }
